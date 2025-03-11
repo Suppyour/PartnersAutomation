@@ -1,0 +1,2 @@
+# PartnersAutomation
+Проектный практикум
