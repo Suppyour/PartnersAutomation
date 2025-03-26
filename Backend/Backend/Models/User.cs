@@ -2,7 +2,7 @@ namespace Backend;
 
 public class User
 {
-    public const int MaxLength = 20;
+    public const int MaxLength = 25;
 
     public User(Guid id, string login, string email, string password)
     {
