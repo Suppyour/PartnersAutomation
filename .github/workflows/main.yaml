@@ -1,0 +1,28 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  BACKEND_IMAGE: suppyour/backend:latest
+
+jobs:
+  build-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Docker Login
+      run: |
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+    - name: Build and push back
+      env:
+        BACKEND_IMAGE_TAG: ${{ env.BACKEND_IMAGE }}
+      run: |
+        cd ./Backend
+        docker build -f Dockerfile --force-rm -t $BACKEND_IMAGE_TAG .
+        docker push $BACKEND_IMAGE_TAG

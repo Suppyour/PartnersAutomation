@@ -1,9 +1,9 @@
-﻿using Backend;
-using Backend.Entites;
+﻿using Backend.Entites;
+using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace UsersBD.Configuration
+namespace Backend.REPO
 {
     class UserConfig : IEntityTypeConfiguration<UserEntity>
     {
