@@ -1,8 +1,9 @@
-﻿using Backend.Entites;
+﻿using Backend.Abstractions;
+using Backend.Entites;
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend.REPO
+namespace Backend.Repositories
 {
     public class UserRepository : IUserRepository
     {
@@ -13,7 +14,7 @@ namespace Backend.REPO
             _context = context;
         }
         // Пошла реализация CRUD r(ead) - get  
-        public async Task<List<User?>> GetUsers()
+        public async Task<List<User?>> GetUser()
         {
             var userEntity = await _context.Users
                 .AsNoTracking() // Не изменяем данные => юзаем 

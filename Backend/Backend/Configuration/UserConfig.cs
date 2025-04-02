@@ -3,7 +3,7 @@ using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Backend.REPO
+namespace Backend.config
 {
     class UserConfig : IEntityTypeConfiguration<UserEntity>
     {

@@ -1,7 +1,7 @@
 ﻿using Backend.Entites;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend.REPO
+namespace Backend.Repositories
 {
     public class UsersDbContext : DbContext
     {
