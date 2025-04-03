@@ -1,5 +1,7 @@
 using Backend;
+using Backend.Abstractions;
 using Backend.Repositories;
+using Backend.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,9 @@ builder.Services.AddDbContext<UsersDbContext>(
     {
         options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(UsersDbContext)));
     });
+
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
