@@ -13,17 +13,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<UsersDbContext>(
     options =>
     {
-        options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(UsersDbContext)));
+        options.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ??
+                          builder.Configuration.GetConnectionString("DefaultConnection"));
     });
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-app.Run();
 
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.Run();
