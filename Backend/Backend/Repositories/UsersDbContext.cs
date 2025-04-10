@@ -10,5 +10,11 @@ namespace Backend.Repositories
             
         }
         public DbSet<UserEntity> Users { get; set; }
+
+        public async Task RecreateDatabase()
+        {
+            await Database.EnsureDeletedAsync();
+            await Database.EnsureCreatedAsync();
+        }
     }
 }

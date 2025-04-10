@@ -17,6 +17,7 @@ builder.Services.AddDbContext<UsersDbContext>(
                           builder.Configuration.GetConnectionString("DefaultConnection"));
     });
 
+builder.Services.AddScoped<DatabaseService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
@@ -24,5 +25,6 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+app.MapControllers();
 
 app.Run();

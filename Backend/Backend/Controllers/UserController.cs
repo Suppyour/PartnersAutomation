@@ -3,6 +3,7 @@ using Backend.Abstractions;
 using Backend.Contracts;
 using Backend.Models;
 using Backend.Repositories;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers;
@@ -27,4 +28,25 @@ public class UserController : ControllerBase
 
         return Ok(responce);
     }
+
+    [HttpPost]
+
+    public async Task<ActionResult<Guid>> CreateUser([FromBody] UserRequest request)
+    {
+        var (user, error) = Models.User.Create(
+            Guid.NewGuid(),
+            request.Login,
+            request.Email,
+            request.Password);
+        if (!string.IsNullOrEmpty(error))
+        {
+            return BadRequest(error);
+        }
+        
+        var userId = await _userService.CreateUser(user);
+        
+        return Ok(userId);
+    }
+    
+    
 }

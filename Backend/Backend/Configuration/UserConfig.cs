@@ -13,6 +13,12 @@ namespace Backend.Configuration
             builder.Property(b => b.Password)
                 .IsRequired()
                 .HasMaxLength(User.MaxLength);
+            builder.Property(b => b.Login)
+                .IsRequired()
+                .HasMaxLength(User.MaxLength);
+            builder.Property(b => b.Email)
+                .IsRequired()
+                .HasMaxLength(User.MaxLength);
         }
     }
 }

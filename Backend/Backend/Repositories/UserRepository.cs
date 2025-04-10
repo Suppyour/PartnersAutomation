@@ -13,8 +13,7 @@ namespace Backend.Repositories
         {
             _context = context;
         }
-        // Пошла реализация CRUD r(ead) - get  
-        public async Task<List<User?>> GetUser()
+        public async Task<List<User>> GetUser()
         {
             var userEntity = await _context.Users
                 .AsNoTracking() // Не изменяем данные => юзаем 
@@ -24,7 +23,7 @@ namespace Backend.Repositories
                 .Select(x => User.Create(x.Id, x.Login, x.Email, x.Password).User)
                 .ToList();
             return users;
-        }
+        }  
 
         public async Task<Guid> CreateUser(User user)
         {

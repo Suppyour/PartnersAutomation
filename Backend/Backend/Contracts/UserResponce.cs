@@ -5,3 +5,8 @@ public record UserResponce(
     string Password,
     string Email,
     string Login);
+    
+public record UserRequest(
+    string Password,
+    string Email,
+    string Login);
