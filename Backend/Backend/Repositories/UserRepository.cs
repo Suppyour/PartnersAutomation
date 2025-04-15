@@ -13,14 +13,14 @@ namespace Backend.Repositories
         {
             _context = context;
         }
-        public async Task<List<User>> GetUser()
+        public async Task<List<User?>> GetUser()
         {
             var userEntity = await _context.Users
                 .AsNoTracking() // Не изменяем данные => юзаем 
                 .ToListAsync();
             // мы получили Entity, а не список User
             var users = userEntity
-                .Select(x => User.Create(x.Id, x.Login, x.Email, x.Password).User)
+                .Select(u => User.Create(u.Id, u.Login, u.Email, u.Password).User)
                 .ToList();
             return users;
         }  
@@ -43,18 +43,18 @@ namespace Backend.Repositories
         public async Task<Guid> UpdateUser(Guid id, string password, string login, string email)
         {
             await _context.Users
-                .Where(x => x.Id == id)
+                .Where(u => u.Id == id)
                 .ExecuteUpdateAsync(setProperty => setProperty
-                    .SetProperty(b => b.Password, b => password)
-                    .SetProperty(b => b.Login, b => login)
-                    .SetProperty(b => b.Email, b => email));
+                    .SetProperty(u => u.Password, u => password)
+                    .SetProperty(u => u.Login, u => login)
+                    .SetProperty(u => u.Email, u => email));
             return id;
         }
 
         public async Task<Guid> DeleteUser(Guid id)
         {
             await _context.Users
-                .Where(b => b.Id == id)
+                .Where(u => u.Id == id)
                 .ExecuteDeleteAsync();
             return id;
         }
