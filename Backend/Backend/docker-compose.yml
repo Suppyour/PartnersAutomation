@@ -16,7 +16,8 @@ services:
     image: suppyour/backend:latest
     container_name: app
     environment:
-      - "DB_CONNECTION_STRING=host=postgres;Port=5432;Database=FirstDB;User Id=postgres;Password=1234;"
+      - "USER_DB_CONNECTION_STRING=Host=postgres;Port=5432;Database=user_db;Username=postgres;Password=123"
+      - "CATEGORY_DB_CONNECTION_STRING=Host=postgres;Port=5432;Database=category_db;Username=postgres;Password=123"
     ports:
       - :8080
       - :8081

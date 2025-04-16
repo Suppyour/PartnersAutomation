@@ -1,4 +1,6 @@
-using Backend.Abstractions;
+/*
+ * using Backend.Abstractions;
+
 using Backend.Models;
 using Backend.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -26,3 +28,4 @@ public class DatabaseController : ControllerBase
         return Ok();
     }
 }
+ */
