@@ -12,20 +12,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configure DbContexts
-builder.Services.AddDbContext<UsersDbContext>(options =>
+builder.Services.AddDbContext<MyDbContext>(options =>
 {
-    var userDbConnection = Environment.GetEnvironmentVariable("USER_DB_CONNECTION_STRING") ??
-                           builder.Configuration.GetConnectionString("UserDb");
+    var connection = Environment.GetEnvironmentVariable("MY_DB_CONNECTION_STRING") ??
+                           builder.Configuration.GetConnectionString("MyDb");
 
-    options.UseNpgsql(userDbConnection);
-});
-
-builder.Services.AddDbContext<CategoryDbContext>(options =>
-{
-    var categoryDbConnection = Environment.GetEnvironmentVariable("CATEGORY_DB_CONNECTION_STRING") ??
-                               builder.Configuration.GetConnectionString("CategoryDb");
-
-    options.UseNpgsql(categoryDbConnection);
+    options.UseNpgsql(connection);
 });
 
 // Register services and repositories

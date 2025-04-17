@@ -1,14 +1,16 @@
-using Backend.Entites;
+﻿using Backend.Entites;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Repositories
 {
-    public class CategoryDbContext : DbContext
+    public class MyDbContext : DbContext
     {
-        public CategoryDbContext(DbContextOptions<CategoryDbContext> options) : base(options)
+        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
         }
 
+        public DbSet<UserEntity> Users { get; set; }
+        
         public DbSet<CategoryEntity> Categories { get; set; }
 
         public async Task RecreateDatabase()

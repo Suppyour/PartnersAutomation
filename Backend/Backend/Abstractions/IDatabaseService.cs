@@ -6,16 +6,16 @@ namespace Backend.Abstractions;
 
 public class DatabaseService
 {
-    private readonly UsersDbContext _usersDbContext;
+    private readonly MyDbContext _myDbContext;
 
-    public DatabaseService(UsersDbContext usersDbContext)
+    public DatabaseService(MyDbContext myDbContext)
     {
-        _usersDbContext = usersDbContext;
+        _myDbContext = myDbContext;
     }
 
     public async Task RecreateDatabase()
     {
-        await _usersDbContext.Database.EnsureDeletedAsync();
-        await _usersDbContext.Database.EnsureCreatedAsync();
+        await _myDbContext.Database.EnsureDeletedAsync();
+        await _myDbContext.Database.EnsureCreatedAsync();
     }
 }

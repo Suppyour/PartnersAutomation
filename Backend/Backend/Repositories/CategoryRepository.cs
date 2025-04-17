@@ -7,9 +7,9 @@ namespace Backend.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private readonly CategoryDbContext _context;
+        private readonly MyDbContext _context;
 
-        public CategoryRepository(CategoryDbContext context)
+        public CategoryRepository(MyDbContext context)
         {
             _context = context;
         }
