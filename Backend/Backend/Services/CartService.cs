@@ -26,28 +26,26 @@ public class CartService : ICartService
 
         var result = await _cartRepository.AddToCart(entity);
 
-        return new CartResponse
-        {
-            Id = result.Id,
-            UserId = result.UserId,
-            ProductId = result.ProductId,
-            Quantity = result.Quantity,
-            AddedAt = result.AddedAt
-        };
+        return new CartResponse(
+            result.Id,
+            result.UserId,
+            result.ProductId,
+            result.Quantity,
+            result.AddedAt
+        );
     }
 
     public async Task<List<CartResponse>> GetCart(Guid userId)
     {
         var items = await _cartRepository.GetCart(userId);
 
-        return items.Select(item => new CartResponse
-        {
-            Id = item.Id,
-            UserId = item.UserId,
-            ProductId = item.ProductId,
-            Quantity = item.Quantity,
-            AddedAt = item.AddedAt
-        }).ToList();
+        return items.Select(item => new CartResponse(
+            item.Id,
+            item.UserId,
+            item.ProductId,
+            item.Quantity,
+            item.AddedAt
+        )).ToList();
     }
 
     public async Task<Guid> RemoveFromCart(Guid userId, Guid productId)

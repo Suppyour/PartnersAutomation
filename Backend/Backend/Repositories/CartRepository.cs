@@ -1,9 +1,10 @@
+using Backend.Abstractions;
 using Backend.Entites;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Repositories;
 
-public class CartRepository
+public class CartRepository : ICartRepository
 {
     private readonly MyDbContext _context;
 

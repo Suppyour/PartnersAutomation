@@ -1,5 +1,3 @@
-// todo Доделать сервис
-
 using Backend.Abstractions;
 using Backend.Models;
 
