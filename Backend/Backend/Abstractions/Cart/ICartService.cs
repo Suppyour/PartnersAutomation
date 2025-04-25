@@ -1,15 +1,11 @@
-using Backend.Contracts;
+using Backend.Models;
 
 namespace Backend.Abstractions;
 
 public interface ICartService
 {
-    Task<CartResponse> AddToCart(CartRequest request);
-    
+    Task<List<CartItem>> GetCart(Guid userId);
+    Task<Guid> CreateCart(CartItem cartItem);
     Task<Guid> RemoveFromCart(Guid userId, Guid productId);
-    
-    Task<List<CartResponse>> GetCart(Guid userId);
-    
     Task<Guid> ClearCart(Guid userId);
-    
 }

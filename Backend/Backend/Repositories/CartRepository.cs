@@ -13,7 +13,7 @@ public class CartRepository : ICartRepository
         _context = context;
     }
 
-    public async Task<CartEntity> AddToCart(CartEntity cartItem)
+    public async Task<CartEntity> CreateCart(CartEntity cartItem)
     {
         await _context.Cart.AddAsync(cartItem);
         await _context.SaveChangesAsync();

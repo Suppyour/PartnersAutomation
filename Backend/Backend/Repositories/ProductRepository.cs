@@ -40,7 +40,7 @@ public class ProductRepository(MyDbContext context) : IProductRepository
         return products;
     }
 
-    public async Task<Guid> CreateProduct(Product product)
+    public async Task<Guid> CreateProduct(Product? product)
     {
         var entity = new ProductEntity
         {

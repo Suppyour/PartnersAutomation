@@ -5,7 +5,7 @@ namespace Backend.Abstractions;
 
 public interface ICartRepository
 {
-    Task<CartEntity> AddToCart(CartEntity cartItem);
+    Task<CartEntity> CreateCart(CartEntity cartItem);
 
     Task<Guid> RemoveFromCart(Guid userId, Guid productId);
 

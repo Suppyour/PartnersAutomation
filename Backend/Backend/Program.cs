@@ -1,5 +1,7 @@
 using Backend;
 using Backend.Abstractions;
+using Backend.Contracts;
+using Backend.Models;
 using Backend.Repositories;
 using Backend.Services;
 using Microsoft.EntityFrameworkCore;
@@ -27,8 +29,8 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<ICartRepository, CartRepository>();
-builder.Services.AddScoped<ICartService, CartService>();
-builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 
 // Build the app

@@ -4,7 +4,7 @@ namespace Backend.Abstractions;
 
 public interface IProductService
 {
-    Task<Guid> CreateProduct(Product product);
+    Task<Guid> CreateProduct(Product? product);
 
     Task<Guid> DeleteProduct(Guid id);
 

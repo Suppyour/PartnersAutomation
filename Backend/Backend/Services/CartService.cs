@@ -1,6 +1,6 @@
 using Backend.Abstractions;
-using Backend.Contracts;
 using Backend.Entites;
+using Backend.Models;
 
 namespace Backend.Services;
 
@@ -13,39 +13,33 @@ public class CartService : ICartService
         _cartRepository = cartRepository;
     }
 
-    public async Task<CartResponse> AddToCart(CartRequest request)
+    public async Task<List<CartItem>> GetCart(Guid userId)
+    {
+        var entities = await _cartRepository.GetCart(userId);
+
+        return entities.Select(e => new CartItem
+        {
+            Id = e.Id,
+            UserId = e.UserId,
+            ProductId = e.ProductId,
+            Quantity = e.Quantity,
+            AddedAt = e.AddedAt
+        }).ToList();
+    }
+
+    public async Task<Guid> CreateCart(CartItem cart)
     {
         var entity = new CartEntity
         {
-            Id = Guid.NewGuid(),
-            UserId = request.UserId,
-            ProductId = request.ProductId,
-            Quantity = request.Quantity,
-            AddedAt = DateTime.UtcNow
+            Id = cart.Id,
+            UserId = cart.UserId,
+            ProductId = cart.ProductId,
+            Quantity = cart.Quantity,
+            AddedAt = cart.AddedAt
         };
 
-        var result = await _cartRepository.AddToCart(entity);
-
-        return new CartResponse(
-            result.Id,
-            result.UserId,
-            result.ProductId,
-            result.Quantity,
-            result.AddedAt
-        );
-    }
-
-    public async Task<List<CartResponse>> GetCart(Guid userId)
-    {
-        var items = await _cartRepository.GetCart(userId);
-
-        return items.Select(item => new CartResponse(
-            item.Id,
-            item.UserId,
-            item.ProductId,
-            item.Quantity,
-            item.AddedAt
-        )).ToList();
+        await _cartRepository.CreateCart(entity);
+        return entity.Id;
     }
 
     public async Task<Guid> RemoveFromCart(Guid userId, Guid productId)
@@ -56,5 +50,10 @@ public class CartService : ICartService
     public async Task<Guid> ClearCart(Guid userId)
     {
         return await _cartRepository.ClearCart(userId);
+    }
+
+    public async Task<Guid> UpdateCart(Guid id, int quantity)
+    {
+        throw new Exception("позже");
     }
 }

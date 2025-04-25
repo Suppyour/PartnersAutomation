@@ -16,9 +16,10 @@ public class CartController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Guid>> AddToCart([FromBody] CartRequest request)
+    public async Task<ActionResult<Guid>> CreateCart([FromBody] CartRequest request)
     {
-        var result = await _cartService.AddToCart(request);
+        var (cartItem, error) = CartItem.CreateCart(request.UserId, request.ProductId, request.Quantity);
+        var result = await _cartService.CreateCart(cartItem);
         return Ok(result);
     }
 
@@ -28,10 +29,10 @@ public class CartController : ControllerBase
         var carts = await _cartService.GetCart(userId);
 
         var responce = carts.Select(c => new CartResponse(c.Id, c.UserId, c.ProductId, c.Quantity, c.AddedAt));
-        
+
         return Ok(responce);
     }
-    
+
     [HttpDelete]
     public async Task<IActionResult> RemoveFromCart([FromQuery] Guid userId, [FromQuery] Guid productId)
     {
