@@ -17,7 +17,7 @@ public class User
     public string? Email { get; set; }
     public string? Password { get; set; }
 
-    public static (User? User, string Error) Create(Guid id, string? login, string? email, string? password)
+    public static (User User, string Error) Create(Guid id, string? login, string? email, string? password)
     {
         if (string.IsNullOrWhiteSpace(login) || login.Length > MaxLength)
         {
@@ -31,7 +31,7 @@ public class User
         {
             return (null, "Пароль не может быть пустым");
         }
-        var user = new User(Guid.NewGuid(), login, email, password);
+        var user = new User(id, login, email, password);
         return (user, string.Empty);
     }
 }

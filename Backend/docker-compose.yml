@@ -1,36 +1,36 @@
-# Маловнятная реализация (переделать)
+version: '3.8'
 
-version: "2.33.1"
 services:
   postgres:
     container_name: postgres
     image: postgres:latest
     environment:
-      POSTGRES_DB: "user_db"
+      POSTGRES_DB: my_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123
+      POSTGRES_PASSWORD: 1234
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:
       - "5433:5432"
     networks:
       - my-network
+
   app:
     image: suppyour/backend:latest
     container_name: app
     environment:
       - "DB_CONNECTION_STRING=host=postgres;Port=5432;Database=FirstDB;User Id=postgres;Password=123;"
-      - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - 8080:8080
-      - 8081:8081
+      - "8080:8080"
+      - "8081:8081"
     depends_on:
       - postgres
     networks:
       - my-network
+
 volumes:
   postgres-data:
+
 networks:
   my-network:
     driver: bridge
-    

@@ -7,13 +7,12 @@ namespace Backend.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly UsersDbContext _context;
+        private readonly MyDbContext _context;
 
-        public UserRepository(UsersDbContext context)
+        public UserRepository(MyDbContext context)
         {
             _context = context;
         }
-        // Пошла реализация CRUD r(ead) - get  
         public async Task<List<User?>> GetUser()
         {
             var userEntity = await _context.Users
@@ -21,10 +20,10 @@ namespace Backend.Repositories
                 .ToListAsync();
             // мы получили Entity, а не список User
             var users = userEntity
-                .Select(x => User.Create(x.Id, x.Login, x.Email, x.Password).User)
+                .Select(u => User.Create(u.Id, u.Login, u.Email, u.Password).User)
                 .ToList();
             return users;
-        }
+        }  
 
         public async Task<Guid> CreateUser(User user)
         {
@@ -44,18 +43,18 @@ namespace Backend.Repositories
         public async Task<Guid> UpdateUser(Guid id, string password, string login, string email)
         {
             await _context.Users
-                .Where(x => x.Id == id)
+                .Where(u => u.Id == id)
                 .ExecuteUpdateAsync(setProperty => setProperty
-                    .SetProperty(b => b.Password, b => password)
-                    .SetProperty(b => b.Login, b => login)
-                    .SetProperty(b => b.Email, b => email));
+                    .SetProperty(u => u.Password, u => password)
+                    .SetProperty(u => u.Login, u => login)
+                    .SetProperty(u => u.Email, u => email));
             return id;
         }
 
         public async Task<Guid> DeleteUser(Guid id)
         {
             await _context.Users
-                .Where(b => b.Id == id)
+                .Where(u => u.Id == id)
                 .ExecuteDeleteAsync();
             return id;
         }

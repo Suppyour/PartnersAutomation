@@ -1,7 +1,6 @@
 namespace Backend.Contracts;
 
-public record UserResponce(
-    Guid UserId,
+public record UserRequest(
     string Password,
     string Email,
     string Login);
