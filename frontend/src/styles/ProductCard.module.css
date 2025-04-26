@@ -1,0 +1,40 @@
+.card {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .image {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+  
+  .info {
+    text-align: left;
+    width: 100%;
+  }
+  
+  .name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  
+  .category {
+    font-size: 12px;
+    color: #808080;
+  }
+  
+  .price {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .cardLink {
+    text-decoration: none;
+    color: inherit;
+  }
+  

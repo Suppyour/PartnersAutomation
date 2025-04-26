@@ -1,0 +1,321 @@
+.container {
+  margin-bottom: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.fashionSection {
+  background-color: #f7f7f8;
+  padding: 0px 20px;
+  position: relative; /* для позиционирования звёзд */
+  overflow: hidden;
+}
+
+.fashionContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.fashionText {
+  flex: 1;
+  min-width: 300px;
+  padding-bottom: 50px;
+}
+
+.fashionText h1 {
+  font-size: 60px;
+  font-weight: 800;
+  /* margin-bottom: 24px; */
+  /* line-height: ; */
+}
+
+.fashionText p {
+  font-size: 16px;
+  color: #444;
+  /* margin-bottom: 32px; */
+  max-width: 1000px;
+  padding-bottom: 32px;
+}
+
+.fashionTextButton {
+  background-color: black;
+  color: white;
+  padding: 20px 38px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.fashionText button:hover {
+  background-color: #333;
+}
+
+.fashionImageContainer {
+  flex: 1;
+  min-width: 300px;
+}
+
+.fashionImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Звезды ✦ */
+.star {
+  position: absolute;
+  font-size: 36px;
+  color: black;
+  animation: pulse 3s infinite ease-in-out;
+  pointer-events: none;
+}
+
+.topStar {
+  font-size: 100px;
+  top: 30px;
+  left: 45%;
+  transform: translateX(-50%);
+}
+
+.bottomStar {
+  bottom: 250px;
+  right: 5%;
+}
+
+/* Секция с брендами */
+
+.brandsSection {
+  background-color: #23312e;
+  padding: 40px 20px;
+}
+
+.brandsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.brandLogo {
+  height: 40px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* делает лого белым, если оно чёрное */
+  transition: transform 0.3s ease;
+}
+
+.brandLogo:hover {
+  transform: scale(1.1);
+}
+
+/* Секция ProductShowCase */
+
+.section {
+  margin-top: 60px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.buttonWrapper {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.button:hover {
+  background-color: #f3f3f3;
+}
+
+.hrWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+  padding: 0 100px; /* небольшой отступ по бокам на маленьких экранах */
+  box-sizing: border-box;
+}
+
+.hr {
+  width: 100%;
+  max-width: 1100px;
+  height: 1px;
+  background-color: #e0e0e0;
+  border: none;
+}
+
+/* Секция "Выбирайте по стилю" */
+
+.styleSection {
+  max-width: 960px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #f3f3f3;
+  border-radius: 32px;
+  text-align: center;
+}
+
+.styleSection h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-areas:
+    "casual business"
+    "fancy sport";
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  cursor: pointer;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.casual {
+  grid-area: casual;
+}
+
+.business {
+  grid-area: business;
+}
+
+.fancy {
+  grid-area: fancy;
+}
+
+.sport {
+  grid-area: sport;
+}
+
+.fancy img {
+  height: 260px;
+}
+
+.business img {
+  height: 260px;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .brandLogo {
+    height: 30px;
+  }
+
+  .brandsContainer {
+    gap: 20px;
+  }
+
+  .fashionContainer {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-bottom: 100px;
+  }
+
+  .fashionText h1 {
+    font-size: 28px;
+  }
+
+  .fashionText p {
+    margin: 0 auto 24px;
+  }
+
+  .topStar {
+    top: 10px;
+    left: 48%;
+  }
+
+  .bottomStar {
+    bottom: -5px;
+    right: 10px;
+  }
+
+  .grid {
+    grid-template-areas:
+      "casual"
+      "business"
+      "fancy"
+      "sport";
+    grid-template-columns: 1fr;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  .label {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+}
+
+
+/* Пульсация */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+    opacity: 0.7;
+  }
+}

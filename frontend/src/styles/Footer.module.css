@@ -1,0 +1,136 @@
+.footer {
+    background-color: #e5e5e5;
+    font-family: sans-serif;
+    padding-top: 50px;
+  }
+  
+  /* Чёрный блок */
+  .subscribeBlock {
+    background-color: #000;
+    color: white;
+    border-radius: 20px;
+    padding: 40px;
+    margin: 0 auto 40px auto;
+    max-width: 1000px;
+  }
+  
+  .subscribeContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .subscribeContent h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0;
+    flex: 1;
+    min-width: 220px;
+  }
+  
+  .subscribeForm {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 24px;
+    padding: 8px 16px;
+    min-width: 260px;
+    flex: 1;
+  }
+  
+  .inputWrapper input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    flex: 1;
+    padding-left: 8px;
+  }
+  
+  .inputWrapper .icon {
+    color: #999;
+    font-size: 16px;
+  }
+  
+  .subscribeForm button {
+    border: none;
+    background: white;
+    color: black;
+    font-weight: 600;
+    border-radius: 24px;
+    padding: 12px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  /* Нижний блок футера */
+  .bottomFooter {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .brandInfo h3 {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  
+  .brandInfo p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+  
+  .divider {
+    margin: 20px 0 10px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+    width: 100%;
+  }
+  
+  .icons {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+  }
+  
+  .icons a {
+    color: #333;
+    font-size: 18px;
+  }
+  
+  /* Адаптив */
+  @media (max-width: 768px) {
+    .subscribeContent {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .subscribeForm {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+  
+    .subscribeForm button {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .bottomFooter {
+      text-align: left;
+      padding: 20px;
+    }
+  }
+  
