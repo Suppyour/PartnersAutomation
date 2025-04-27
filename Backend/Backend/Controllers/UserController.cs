@@ -14,8 +14,7 @@ namespace Backend.Controllers
         {
             _userService = userService;
         }
-
-        // 1) Регистрация
+        
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] UserRequest request)
         {

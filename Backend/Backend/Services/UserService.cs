@@ -54,18 +54,15 @@ public class UserService : IUserService
     public async Task<object> Login(string email, string password)
     {
         var user = await _userRepository.GetUserByEmail(email);
-    
-        // Проверка пароля
+        
         var result = _passwordHasher.VerifyHash(password, user.Password);
         if (!result)
         {
             throw new Exception("Не удалось залогиниться");
         }
 
-        // Генерация токена
         var token = _jwtProvider.GenerateToken(user);
-    
-        // Возврат объекта, содержащего токен и ID пользователя
+
         return new { token, userId = user.Id };
     }
 
