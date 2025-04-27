@@ -1,0 +1,284 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.nav button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav button:hover,
+.nav .active {
+  border-bottom: 2px solid black;
+}
+
+.content {
+  background-color: #f6fafd;
+  padding: 20px 40px;
+  border-radius: 10px;
+  overflow: hidden; /* чтобы ничего не вылезало */
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.7;
+}
+
+.section p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+
+/* --- Секция ВОПРОСОВ --- */
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.count {
+  font-size: 16px;
+  vertical-align: super;
+  margin-left: 5px;
+}
+
+.askBlock {
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.textarea {
+  width: 100%;
+  height: 120px;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  resize: none;
+  margin-bottom: 15px;
+}
+
+.buttonsRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.submit {
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cancel {
+  background: none;
+  border: 2px solid black;
+  color: black;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.charCounter {
+  font-size: 14px;
+  color: gray;
+  text-align: right;
+}
+
+/* --- Список вопросов --- */
+
+.questionsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.questionCard {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  flex: 1 1 calc(50% - 10px); /* 2 карточки в строку */
+  min-width: 300px;
+}
+
+.userHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 14px;
+  color: gray;
+}
+
+.questionText {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* .answerBlock {
+  background: #f6fafd;
+  padding: 15px;
+  border-radius: 10px;
+} */
+
+/* .answerTitle {
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 5px;
+  display: block;
+} */
+
+.answerText {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.viewAll {
+  display: block;
+  margin: 40px auto 0;
+  background: black;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.questionsTitle {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.askBlock {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  outline: none;
+  margin-bottom: 15px;
+  max-width: 905px;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.submitBtn {
+  padding: 10px 20px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  padding: 10px 20px;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.questionsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+.questionCard {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.userInfo strong {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.userInfo span {
+  color: gray;
+  font-size: 14px;
+}
+
+.userQuestion {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.answerBlock {
+  background: #f6fafd;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.answerTitle {
+  font-weight: bold;
+  font-size: 15px;
+  color: gray;
+  margin-bottom: 8px;
+}
+
+/* --- Адаптив для телефонов --- */
+
+@media (max-width: 768px) {
+  .questionsList {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+
+  .questionCard {
+    flex: 1 1 100%;
+  }
+}

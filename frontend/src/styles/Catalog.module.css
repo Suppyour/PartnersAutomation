@@ -1,0 +1,76 @@
+.catalogPage {
+    padding: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+  }
+/*   
+  .breadcrumbs {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 20px;
+  } */
+/* 
+  .link {
+    text-decoration: none;
+    color: #999;
+  } */
+  
+  .topRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .filterButton {
+    padding: 8px 16px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .productCount,
+  .sort {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .sort span {
+    font-weight: bold;
+  }
+  
+  .mainContent {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  
+  /* Добавим фикс для productsGrid */
+  .productsGrid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  /* Новый блок для фильтров */
+.sidebar {
+    width: 240px;
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  

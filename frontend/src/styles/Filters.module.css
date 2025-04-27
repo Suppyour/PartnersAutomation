@@ -1,0 +1,70 @@
+.filters {
+    width: 240px;
+    font-size: 14px;
+  }
+  
+  .section {
+    margin-bottom: 30px;
+  }
+  
+  .section h4 {
+    margin: 8px 0;
+    cursor: pointer;
+    font-weight: normal;
+  }
+  
+  .slider {
+    width: 100%;
+  }
+  
+  .colors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  
+  .colorCircle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  
+  .sizes button {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .styles {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+  }
+  
+  .styles li {
+    cursor: pointer;
+    margin: 6px 0;
+  }
+  
+  .applyBtn {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  

@@ -11,7 +11,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5433:5432"
     networks:
       - my-network
 
@@ -19,7 +19,7 @@ services:
     image: suppyour/backend:latest
     container_name: app
     environment:
-      MY_DB_CONNECTION_STRING: "User ID=postgres;Password=1234;Host=postgres;Port=5432;Database=my_db"
+      - "DB_CONNECTION_STRING=host=postgres;Port=5432;Database=FirstDB;User Id=postgres;Password=123;"
     ports:
       - "8080:8080"
       - "8081:8081"
