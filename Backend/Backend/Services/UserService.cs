@@ -1,17 +1,23 @@
 using Backend.Abstractions;
+using Backend.Abstractions.Password;
+using Backend.Jwt;
 using Backend.Models;
+
 
 namespace Backend.Services;
 
 public class UserService : IUserService
 {
+    private readonly IPasswordHasher _passwordHasher;
     private readonly IUserRepository _userRepository;
+    private readonly IJwtProvider _jwtProvider;
 
-    public UserService(IUserRepository userRepository)
+    public UserService(IPasswordHasher passwordHasher, IUserRepository userRepository, IJwtProvider jwtProvider)
     {
+        _passwordHasher = passwordHasher;
         _userRepository = userRepository;
+        _jwtProvider = jwtProvider;
     }
-
     public async Task<List<User?>> GetAllUsers()
     {
         return await _userRepository.GetUser();
@@ -31,4 +37,37 @@ public class UserService : IUserService
     {
         return await _userRepository.DeleteUser(id);
     }
+    
+    // --------------------------------------------------------------------------------------- //
+
+    public async Task<Guid> Register(string login, string email, string password)
+    {
+        var hashedPassword = _passwordHasher.GenerateHash(password);
+
+        var (user, error) = User.Create(Guid.NewGuid(), login, email, hashedPassword);
+        
+        await _userRepository.CreateUser(user);
+        
+        return user.Id;
+    }
+
+    public async Task<object> Login(string email, string password)
+    {
+        var user = await _userRepository.GetUserByEmail(email);
+    
+        // Проверка пароля
+        var result = _passwordHasher.VerifyHash(password, user.Password);
+        if (!result)
+        {
+            throw new Exception("Не удалось залогиниться");
+        }
+
+        // Генерация токена
+        var token = _jwtProvider.GenerateToken(user);
+    
+        // Возврат объекта, содержащего токен и ID пользователя
+        return new { token, userId = user.Id };
+    }
+
+    
 }

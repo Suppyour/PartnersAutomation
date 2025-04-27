@@ -8,6 +8,7 @@ namespace Backend.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly MyDbContext _context;
+        private IUserRepository _userRepositoryImplementation;
 
         public UserRepository(MyDbContext context)
         {
@@ -57,6 +58,16 @@ namespace Backend.Repositories
                 .Where(u => u.Id == id)
                 .ExecuteDeleteAsync();
             return id;
+        }
+        public async Task<User> GetUserByEmail(string email)
+        {
+            var userEntity = await _context.Users
+                                 .AsNoTracking()
+                                 .FirstOrDefaultAsync(u => u.Email == email) 
+                             ?? throw new Exception($"User with email {email} not found.");
+
+            var (user, error) = User.Create(userEntity.Id, userEntity.Login, userEntity.Email, userEntity.Password);
+            return user;
         }
     }
 }

@@ -2,7 +2,7 @@ using Backend.Models;
 
 public class CartItem
 {
-    public Guid Id { get; set; }
+    public Guid CardId { get; set; }
     public Guid UserId { get; set; }
     public Guid ProductId { get; set; }
     public int Quantity { get; set; }
@@ -18,7 +18,7 @@ public class CartItem
 
         var cart = new CartItem
         {
-            Id = Guid.NewGuid(),
+            CardId = Guid.NewGuid(),
             UserId = userId,
             ProductId = productId,
             Quantity = quantity,

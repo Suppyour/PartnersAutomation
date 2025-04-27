@@ -19,7 +19,7 @@ public class CartService : ICartService
 
         return entities.Select(e => new CartItem
         {
-            Id = e.Id,
+            CardId = e.Id,
             UserId = e.UserId,
             ProductId = e.ProductId,
             Quantity = e.Quantity,
@@ -31,7 +31,7 @@ public class CartService : ICartService
     {
         var entity = new CartEntity
         {
-            Id = cart.Id,
+            Id = cart.CardId,
             UserId = cart.UserId,
             ProductId = cart.ProductId,
             Quantity = cart.Quantity,

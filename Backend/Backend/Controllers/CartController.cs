@@ -28,7 +28,7 @@ public class CartController : ControllerBase
     {
         var carts = await _cartService.GetCart(userId);
 
-        var responce = carts.Select(c => new CartResponse(c.Id, c.UserId, c.ProductId, c.Quantity, c.AddedAt));
+        var responce = carts.Select(c => new CartResponse(c.CardId, c.UserId, c.ProductId, c.Quantity, c.AddedAt));
 
         return Ok(responce);
     }
