@@ -11,4 +11,6 @@ public interface ICategoryService
     Task<List<Category?>> GetCategories();
 
     Task<Guid> UpdateCategory(Guid id, string name, string description);
+    
+    Task<Category> GetCategoryById(Guid id);
 }   

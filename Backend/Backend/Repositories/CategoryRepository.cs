@@ -56,5 +56,21 @@ namespace Backend.Repositories
                 .ExecuteDeleteAsync();
             return id;
         }
+
+        public async Task<Category?> GetCategoryById(Guid id)
+        {
+            var entity = await _context.Categories.FindAsync(id);
+
+            if (entity is null)
+                return null;
+
+            var (category, error) = Category.CreateCategory(
+                entity.Id,
+                entity.Name,
+                entity.Description);
+            
+            return category;
+        }
+
     }
 }
