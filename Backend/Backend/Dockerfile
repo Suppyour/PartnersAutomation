@@ -20,4 +20,5 @@ RUN dotnet publish "Backend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:U
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY ./appsettings.json ./appsettings.json
 ENTRYPOINT ["dotnet", "Backend.dll"]

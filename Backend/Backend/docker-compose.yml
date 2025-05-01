@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
     container_name: postgres
@@ -19,7 +17,7 @@ services:
     image: suppyour/backend:latest
     container_name: app
     environment:
-      - "DB_CONNECTION_STRING=host=postgres;Port=5432;Database=FirstDB;User Id=postgres;Password=123;"
+      - "MY_DB_CONNECTION_STRING=Host=postgres;Port=5432;Database=my_db;Username=postgres;Password=1234"
     ports:
       - "8080:8080"
       - "8081:8081"
@@ -27,6 +25,8 @@ services:
       - postgres
     networks:
       - my-network
+    volumes:
+      - ./appsettings.json:/app/appsettings.json
 
 volumes:
   postgres-data:
