@@ -2,8 +2,8 @@ namespace Backend.Jwt;
 
 public class JwtSettings
 {
-    public string SecretKey    { get; set; } = default!;
-    public string Issuer       { get; set; } = default!;
-    public string Audience     { get; set; } = default!;
-    public int    ExpiresHours { get; set; }
+    public string SecretKey { get; set; } = null!;
+    public string Issuer { get; set; } = null!;
+    public string Audience { get; set; } = null!;
+    public int ExpiresHours { get; set; }
 }

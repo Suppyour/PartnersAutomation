@@ -34,17 +34,25 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // Configure JwtOptions
-builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtOptions"));
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("JwtOptions"));
 
-// Read JwtOptions
+// Read JwtOptionvs
 var jwtOptions = builder.Configuration.GetSection("JwtOptions").Get<JwtSettings>();
+Console.WriteLine($"JWT Secret from config: {jwtOptions?.SecretKey}");
+if (jwtOptions == null || string.IsNullOrWhiteSpace(jwtOptions.SecretKey))
+{
+    throw new InvalidOperationException("JWT options are missing or invalid.");
+}
+
 var key = Encoding.UTF8.GetBytes(jwtOptions.SecretKey);
+
 
 // Configure Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;    
 })
 .AddJwtBearer(options =>
 {
@@ -89,11 +97,8 @@ builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 var app = builder.Build();
 
 // Configure middleware
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger(); 
+app.UseSwaggerUI();
 
 // Use CORS policy
 app.UseCors("AllowSpecificOrigin");
