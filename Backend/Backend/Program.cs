@@ -28,10 +28,7 @@ builder.Services.AddSwaggerGen();
 // Add XML documentation to Swagger
 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-builder.Services.AddSwaggerGen(c =>
-{
-    c.IncludeXmlComments(xmlPath);
-});
+builder.Services.AddSwaggerGen(c => { c.IncludeXmlComments(xmlPath); });
 
 // Configure JwtOptions
 builder.Services.Configure<JwtSettings>(
@@ -50,32 +47,29 @@ var key = Encoding.UTF8.GetBytes(jwtOptions.SecretKey);
 
 // Configure Authentication
 builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;    
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key)
-    };
-});
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key)
+        };
+    });
 
 // Configure Authorization
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
-});
+builder.Services.AddAuthorization(options => { options.AddPolicy("Admin", policy => policy.RequireRole("Admin")); });
 
 // Configure DbContext
 builder.Services.AddDbContext<MyDbContext>(options =>
 {
-    var connection = Environment.GetEnvironmentVariable("MY_DB_CONNECTION_STRING") ?? 
+    var connection = Environment.GetEnvironmentVariable("MY_DB_CONNECTION_STRING") ??
                      builder.Configuration.GetConnectionString("MyDb");
 
     options.UseNpgsql(connection);
@@ -97,7 +91,7 @@ builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 var app = builder.Build();
 
 // Configure middleware
-app.UseSwagger(); 
+app.UseSwagger();
 app.UseSwaggerUI();
 
 // Use CORS policy
