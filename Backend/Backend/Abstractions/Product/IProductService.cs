@@ -12,4 +12,6 @@ public interface IProductService
 
     Task<Guid> UpdateProducts(Guid id, string name, string description, decimal price, int stockQuantity,
         string category);
+    Task<List<Product?>> SearchProductsByName(string name);
+    
 }

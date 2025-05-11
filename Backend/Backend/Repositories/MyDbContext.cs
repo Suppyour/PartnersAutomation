@@ -10,7 +10,6 @@ namespace Backend.Repositories
         public DbSet<CartEntity> Cart { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
-        
         public DbSet<PaymentEntity> Payments { get; set; }
 
         public async Task RecreateDatabase()

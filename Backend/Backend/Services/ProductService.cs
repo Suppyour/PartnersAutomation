@@ -32,4 +32,8 @@ public class ProductService : IProductService
     {
         return await _productRepository.DeleteProduct(id);
     }
+    public async Task<List<Product?>> SearchProductsByName(string name)
+    {
+        return await _productRepository.SearchProductsByName(name);
+    }
 }

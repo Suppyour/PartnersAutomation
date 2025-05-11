@@ -81,4 +81,29 @@ public class ProductRepository(MyDbContext context) : IProductRepository
             .ExecuteDeleteAsync();
         return id;
     }
+    
+    public async Task<List<Product>> SearchProductsByName(string name)
+    {
+        var productEntities = await context.Products
+            .Include(p => p.Images)
+            .Where(p => p.Name.Contains(name))
+            .AsNoTracking()
+            .ToListAsync();
+
+        return productEntities
+            .Select(p => new Product
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price,
+                StockQuantity = p.StockQuantity,
+                Category = p.Category,
+                CreatedAt = p.CreatedAt,
+                UpdatedAt = p.UpdatedAt,
+                Images = p.Images?.ToList()
+            })
+            .ToList();
+    }
+    
 }

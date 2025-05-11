@@ -8,7 +8,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
+using Backend;
 using Backend.Abstractions.Payment;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,16 +23,18 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader());
 });
 
+// Add XML documentation to Swagger
+var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+builder.Services.AddSwaggerGen(c => { c.IncludeXmlComments(xmlPath); });
+
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 
-// Add XML documentation to Swagger
-var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-builder.Services.AddSwaggerGen(c => { c.IncludeXmlComments(xmlPath); });
+
 
 // Configure JwtOptions
 builder.Services.Configure<JwtSettings>(
@@ -38,7 +42,6 @@ builder.Services.Configure<JwtSettings>(
 
 // Read JwtOptionvs
 var jwtOptions = builder.Configuration.GetSection("JwtOptions").Get<JwtSettings>();
-Console.WriteLine($"JWT Secret from config: {jwtOptions?.SecretKey}");
 if (jwtOptions == null || string.IsNullOrWhiteSpace(jwtOptions.SecretKey))
 {
     throw new InvalidOperationException("JWT options are missing or invalid.");

@@ -11,4 +11,7 @@ public interface IProductRepository
     Task<List<Product?>> GetProducts();
 
     Task<Guid> UpdateProduct(Guid id, string name, string description, decimal price, int stockQuantity, string category);
+    
+    Task<List<Product?>> SearchProductsByName(string name);
+    
 }
