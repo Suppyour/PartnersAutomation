@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/ProductDetails.module.css";
 import products from "../../data/Products.jsx"; // Импортируем описание
+import { useParams } from "react-router-dom";
 
 const ProductDetails = () => {
   const [activeTab, setActiveTab] = useState("about");
@@ -23,7 +24,10 @@ const ProductDetails = () => {
   ]);
   const [newQuestion, setNewQuestion] = useState("");
 
-  const product = products[0]; // Временно берём первый продукт
+  const { id } = useParams();
+const product = products.find((p) => String(p.id) === id);
+
+if (!product) return <div>Товар не найден</div>; // Временно берём первый продукт
 
   const handleAddQuestion = () => {
     if (newQuestion.trim()) {

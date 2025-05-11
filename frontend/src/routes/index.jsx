@@ -1,4 +1,4 @@
-import { Routes, Route, Router } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Auth from '../pages/Auth';
 import Catalog from '../pages/Catalog';
@@ -6,6 +6,10 @@ import Login from '../pages/Login';
 import Brands from '../pages/Brands';
 import ProductPage from '../pages/ProductPage';
 import ScrollToTop from '../components/ScrollToTop';
+import ProtectedRoute from "../components/ProtectedRoute";
+import Cart from "../pages/Cart";
+import Profile from "../pages/Profile";
+import NewProducts from '../pages/NewProducts';
 
 export const AppRoutes = () => {
   return (
@@ -18,8 +22,20 @@ export const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/brands" element={<Brands />} />
         <Route path="/catalog/:id" element={<ProductPage />} />
+        <Route path="/new" element={<NewProducts />} />
+        <Route path="/cart" element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
-
   );
 };

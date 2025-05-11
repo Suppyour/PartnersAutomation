@@ -1,10 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import styles from "../styles/Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
+
 
 function Login() {
+    const { login } = useAuth();
+    const navigate = useNavigate();  
+
     const [form, setForm] = useState({
         username: "",
         password: "",
@@ -40,6 +45,24 @@ function Login() {
         setLoginError("");
       };
     
+      // const handleSubmit = (e) => {
+      //   e.preventDefault();
+      //   const validationErrors = validate();
+      //   if (Object.keys(validationErrors).length > 0) {
+      //     setErrors(validationErrors);
+      //     return;
+      //   }
+    
+      //   // Проверка логина и пароля
+      //   if (form.username !== "demoUser" || form.password !== "123456") {
+      //     setLoginError("Неправильный логин или пароль");
+      //     return;
+      //   }
+    
+      //   // Всё хорошо — отправка формы
+      //   console.log("Отправка формы", form);
+      // };
+    
       const handleSubmit = (e) => {
         e.preventDefault();
         const validationErrors = validate();
@@ -47,17 +70,18 @@ function Login() {
           setErrors(validationErrors);
           return;
         }
-    
-        // Проверка логина и пароля
-        if (form.username !== "demoUser" || form.password !== "123456") {
+      
+        // Временная проверка (уберу позже)
+        if (form.username !== "test" || form.password !== "123456" || form.email !== "test@test.com") {
           setLoginError("Неправильный логин или пароль");
           return;
         }
-    
-        // Всё хорошо — отправка формы
-        console.log("Отправка формы", form);
+      
+        login();            // авторизуем
+        navigate("/profile");  // переход после входа
       };
-    
+      
+
       return (
         <div className={styles.loginPage}>
           <div className={styles.formContainer}>
