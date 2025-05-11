@@ -10,14 +10,14 @@ public class Product
     public string Description { get; set; } = null!;
     public decimal Price { get; set; }
     public int StockQuantity { get; set; }
-
     public string Category { get; set; } = null!;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; }
 
     public List<ProductImageEntity>? Images { get; set; }
 
-    public static (Product? Product, string Error) CreateProduct(string name, string description, decimal price, int stockQuantity, string category)
+    public static (Product? Product, string Error) CreateProduct(string name, string description, decimal price,
+        int stockQuantity, string category)
     {
         if (string.IsNullOrWhiteSpace(name))
             return (null, "Название не может быть пустым.");

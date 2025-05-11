@@ -31,4 +31,9 @@ public class CategoryService : ICategoryService
     {
         return await _categoryRepository.DeleteCategory(id);
     }
+
+    public async Task<Category> GetCategoryById(Guid id)
+    {
+        return await _categoryRepository.GetCategoryById(id);
+    }
 }

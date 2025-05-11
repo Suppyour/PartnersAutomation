@@ -23,14 +23,17 @@ public class User
         {
             return (null, "Логин не может быть пустым, либо превышает максимально допустимую длину");
         }
+
         if (string.IsNullOrWhiteSpace(email) || email.Length > MaxLength)
         {
             return (null, "Mail не может быть пустым, либо превышает максимально допустимую длину");
         }
+
         if (string.IsNullOrWhiteSpace(password))
         {
             return (null, "Пароль не может быть пустым");
         }
+
         var user = new User(id, login, email, password);
         return (user, string.Empty);
     }

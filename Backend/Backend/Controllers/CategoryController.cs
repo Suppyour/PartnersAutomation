@@ -59,6 +59,20 @@ public class CategoryController : ControllerBase
 
         return Ok(responce);
     }
+    
+    /// <summary>
+    /// Получение категории по идентификатору.
+    /// </summary>
+    /// <param name="id">Идентификатор категории.</param>
+    /// <returns>Данные категории.</returns>
+    [HttpGet("{id:guid}")]
+    public async Task<ActionResult<CategoryResponce>> GetCategoryById([FromRoute] Guid id)
+    {
+        var category = await _categoryService.GetCategoryById(id);
+
+        return Ok(new CategoryResponce(category.Id, category.Name, category.Description));
+    }
+
 
     /// <summary>
     /// Обновление данных существующей категории.
