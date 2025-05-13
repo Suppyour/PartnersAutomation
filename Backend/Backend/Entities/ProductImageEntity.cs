@@ -1,4 +1,4 @@
-namespace Backend.Entites;
+namespace Backend.Entities;
 
 public class ProductImageEntity
 {

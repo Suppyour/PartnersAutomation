@@ -1,5 +1,5 @@
 using Backend.Abstractions;
-using Backend.Entites;
+using Backend.Entities;
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 

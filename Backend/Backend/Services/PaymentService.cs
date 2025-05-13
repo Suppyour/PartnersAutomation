@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using Backend.Abstractions.Payment;
 using Backend.Contracts;
-using Backend.Entites;
+using Backend.Entities;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 

@@ -1,6 +1,6 @@
 ﻿// Сеё чудо требуется для того что бы в БД не было вообще никакой логики (repeat yourself получается)
 
-namespace Backend.Entites
+namespace Backend.Entities
 {
     public class UserEntity
     {
