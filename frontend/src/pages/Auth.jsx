@@ -2,6 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/Auth.module.css";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 
 function Auth() {
   const [form, setForm] = useState({
@@ -12,6 +15,10 @@ function Auth() {
   });
 
   const [errors, setErrors] = useState({});
+
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
 
   const validate = () => {
     const newErrors = {};
@@ -46,16 +53,28 @@ function Auth() {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const validationErrors = validate();
+  //   if (Object.keys(validationErrors).length > 0) {
+  //     setErrors(validationErrors);
+  //   } else {
+  //     // TODO: регистрация
+  //     console.log("Регистрация отправлена", form);
+  //   }
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      // TODO: регистрация
-      console.log("Регистрация отправлена", form);
+      login();           // ← временно авторизуем
+      navigate("/profile"); // ← переход после регистрации
     }
   };
+  
 
   return (
     <div className={styles.registerPage}>
