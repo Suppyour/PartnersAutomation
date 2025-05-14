@@ -1,5 +1,6 @@
 using Backend.Abstractions;
-using Backend.Entites;
+using Backend.Abstractions.Cart;
+using Backend.Entities;
 using Backend.Models;
 
 namespace Backend.Services;

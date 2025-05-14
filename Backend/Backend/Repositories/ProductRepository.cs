@@ -1,5 +1,5 @@
 using Backend.Abstractions;
-using Backend.Entites;
+using Backend.Entities;
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +21,6 @@ public class ProductRepository(MyDbContext context) : IProductRepository
                     p.Name,
                     p.Description,
                     p.Price,
-                    p.StockQuantity,
                     p.Category
                 );
 
@@ -48,7 +47,6 @@ public class ProductRepository(MyDbContext context) : IProductRepository
             Name = product.Name,
             Description = product.Description,
             Price = product.Price,
-            StockQuantity = product.StockQuantity,
             Category = product.Category,
             CreatedAt = product.CreatedAt
         };
@@ -68,7 +66,6 @@ public class ProductRepository(MyDbContext context) : IProductRepository
                 .SetProperty(p => p.Name, p => name)
                 .SetProperty(p => p.Description, p => description)
                 .SetProperty(p => p.Price, p => price)
-                .SetProperty(p => p.StockQuantity, p => stockQuantity)
                 .SetProperty(p => p.Category, p => category)
                 .SetProperty(p => p.UpdatedAt, p => DateTime.UtcNow));
         return id;
@@ -97,7 +94,6 @@ public class ProductRepository(MyDbContext context) : IProductRepository
                 Name = p.Name,
                 Description = p.Description,
                 Price = p.Price,
-                StockQuantity = p.StockQuantity,
                 Category = p.Category,
                 CreatedAt = p.CreatedAt,
                 UpdatedAt = p.UpdatedAt,
