@@ -54,16 +54,27 @@ public class ProductController : ControllerBase
     public async Task<ActionResult<List<ProductResponse>>> GetProducts()
     {
         var products = await _productService.GetProducts();
-
-        var response = products.Select(p => new ProductResponse
+    
+        var response = new List<ProductResponse>();
+        foreach (var product in products)
         {
-            Id = p.Id,
-            Name = p.Name,
-            Description = p.Description,
-            Price = p.Price,
-            Category = p.Category,
-            ImageUrls = p.Images?.Select(i => i.Url).ToList() ?? new List<string>()
-        }).ToList();
+            var sizes = await _sizeService.GetProductSizes(product.Id) ?? new List<ProductSizeEntity>();
+        
+            response.Add(new ProductResponse
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                Category = product.Category,
+                ImageUrls = product.Images?.Select(i => i.Url).ToList() ?? new(),
+                Sizes = sizes.Select(s => new ProductSizeResponse
+                {
+                    SizeName = s.Size?.Name ?? string.Empty,
+                    Quantity = s.Quantity
+                }).ToList()
+            });
+        }
 
         return Ok(response);
     }
