@@ -1,0 +1,165 @@
+.cartPage {
+  padding: 32px;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cartContainer {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.cartItems {
+  flex: 2;
+  background-color: #fafafa;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+}
+
+.productImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+
+.itemDetails {
+  flex-grow: 1;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 16px;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.summary {
+  flex: 1;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  background: white;
+  height: fit-content;
+}
+
+.summaryRow,
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.discount {
+  color: red;
+}
+
+.summaryTotal {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.promoBlock {
+  display: flex;
+  margin-top: 12px;
+  gap: 8px;
+}
+
+.promoInput {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  font-size: 14px;
+}
+
+.applyButton {
+  padding: 8px 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.orderButton {
+  margin-top: 16px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.deliveryBlockFull {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+}
+
+.extraBlocks {
+  display: flex;
+  gap: 20px;
+}
+
+.paymentBlock,
+.profileBlock {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.blockHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.editButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.phoneInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.eta {
+  color: #aaa;
+  font-size: 14px;
+}

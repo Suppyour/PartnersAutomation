@@ -6,6 +6,9 @@ const products = [
       category: "Футболки",
       rating: 4.5,
       image: require("../assets/products/shirt.png"),
+      color: "Orange",
+      size: "L",
+      style: "casual",
       about: 'Эта футболка с графическим рисунком идеально подойдет для любого случая. Изготовленная из мягкой и дышащей ткани, она обеспечивает превосходный комфорт и стиль.',
       description: {
         about: `Эта футболка с графическим рисунком "One Life" идеально подойдет для любого случая. Изготовленная из мягкой и дышащей ткани, 
@@ -48,6 +51,9 @@ const products = [
       price: 2400,
       image: require("../assets/products/jeans.png"),
       about: 'Тут краткое описание джинс',
+      color: "Blue",
+      size: "XL",
+      style: "casual",
       description: {
         about: 'Тут подробное описание джинс',
         condition: ['Тут состояние джинс'],

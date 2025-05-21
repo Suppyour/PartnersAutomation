@@ -79,7 +79,7 @@ const Navbar = () => {
                 <span className={styles.cartBadge}>{cartItemsCount}</span>
               )}
             </Link>
-            <Link to="/auth" className={styles.userIcon}>
+            <Link to="/profile" className={styles.userIcon}>
               <FiUser />
             </Link>
           </div>

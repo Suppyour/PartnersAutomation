@@ -1,0 +1,183 @@
+.dashboard {
+  display: flex;
+  font-family: sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  font-size: 24px;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menuItem {
+  background: none;
+  border: none;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.menuItem:hover,
+.menuItem.active {
+  background: #f0f0f0;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.dateAndUser {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.statCard {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.graphSection {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.chartCard,
+.popularCard {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.chartCard {
+  flex: 2;
+}
+
+.popularCard {
+  flex: 1;
+}
+
+.tabButtons {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.tabButtons button {
+  background: #eee;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tabButtons .active {
+  background: #000;
+  color: #fff;
+}
+
+.fakeChart {
+  background: #f5f5f5;
+  height: 200px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popularItem {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.productImg {
+  width: 48px;
+  height: 48px;
+  background: #eee;
+  border-radius: 6px;
+}
+
+.reportButton {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ordersTable {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.ordersTable table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.ordersTable th,
+.ordersTable td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}

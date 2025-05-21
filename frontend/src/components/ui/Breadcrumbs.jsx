@@ -13,6 +13,7 @@ const breadcrumbMap = {
   sale: "Распродажа",
   brands: "Бренды",
   news: "Новинки",
+  admin: "Панель администратора",
 //   product.id: product.name,
 };
 
