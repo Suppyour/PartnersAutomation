@@ -12,11 +12,6 @@ namespace Backend.Controllers;
 public class PaymentController : ControllerBase
 {
     private readonly IPaymentService _paymentService;
-
-    /// <summary>
-    /// Инициализирует новый экземпляр <see cref="PaymentController"/>.
-    /// </summary>
-    /// <param name="paymentService">Сервис обработки платежей.</param>
     public PaymentController(IPaymentService paymentService)
     {
         _paymentService = paymentService;

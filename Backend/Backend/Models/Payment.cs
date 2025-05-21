@@ -6,7 +6,7 @@ public class Payment
     public int OrderId { get; set; }
     public decimal Amount { get; set; }
     public string YooKassaPaymentId { get; set; } = string.Empty;
-    public string? Status { get; set; } = "Pending"; // Инициализация по умолчанию
+    public string? Status { get; set; } = "Pending";
     
     public DateTime CreatedAt { get; set; }
 

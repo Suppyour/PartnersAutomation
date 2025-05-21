@@ -13,6 +13,7 @@ using Backend.Abstractions.Cart;
 using Backend.Abstractions.Payment;
 using Backend.Abstractions.Size;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +36,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
-
 
 
 // Configure JwtOptions
@@ -113,5 +113,11 @@ app.UseAuthentication(); // обязательно ДО UseAuthorization
 app.UseAuthorization();
 
 app.MapControllers();
+// ПОЛНАЯ ХУЙНЯ потом разобраться если заработает
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<MyDbContext>();
+    db.Database.EnsureCreated();
+}
 
 app.Run();
