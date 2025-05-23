@@ -118,6 +118,9 @@ namespace Backend.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
+                    b.Property<int>("Size")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -144,45 +147,6 @@ namespace Backend.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImageEntity");
-                });
-
-            modelBuilder.Entity("Backend.Entities.ProductSizeEntity", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("SizeId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
-                    b.HasKey("ProductId", "SizeId");
-
-                    b.HasIndex("SizeId");
-
-                    b.ToTable("ProductSizes");
-                });
-
-            modelBuilder.Entity("Backend.Entities.SizeEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("Backend.Entities.UserEntity", b =>
@@ -227,35 +191,9 @@ namespace Backend.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Backend.Entities.ProductSizeEntity", b =>
-                {
-                    b.HasOne("Backend.Entities.ProductEntity", "Product")
-                        .WithMany("ProductSizes")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Backend.Entities.SizeEntity", "Size")
-                        .WithMany("ProductSizes")
-                        .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Size");
-                });
-
             modelBuilder.Entity("Backend.Entities.ProductEntity", b =>
                 {
                     b.Navigation("Images");
-
-                    b.Navigation("ProductSizes");
-                });
-
-            modelBuilder.Entity("Backend.Entities.SizeEntity", b =>
-                {
-                    b.Navigation("ProductSizes");
                 });
 #pragma warning restore 612, 618
         }

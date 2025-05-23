@@ -44,7 +44,7 @@ namespace Backend.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginUserRequest request)
         {
-            var result = await _userService.Login(request.Email, request.Password);
+            var result = await _userService.Login(request.Login, request.Password, request.Email);
             
             return Ok(result);
         }

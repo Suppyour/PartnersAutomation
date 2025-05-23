@@ -12,7 +12,7 @@ public interface IUserService
 
     Task<Guid> DeleteUser(Guid id);
     
-    Task<object> Login(string requestEmail, string requestPassword);
+    Task<object> Login(string requestLogin, string requestPassword, string requestEmail);
     
     Task<Guid> Register(string requestLogin, string requestEmail, string requestPassword);
 }

@@ -10,9 +10,9 @@ public class ProductEntity
     public string Description { get; set; } = null!;
     public decimal Price { get; set; }
     public string Category { get; set; } = null!;
+    
+    public int Size { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     public List<ProductImageEntity> Images { get; set; } = new();
-    public List<ProductSizeEntity> ProductSizes { get; set; } = new();
-    
 }

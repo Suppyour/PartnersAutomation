@@ -11,7 +11,6 @@ using System.Reflection;
 using Backend;
 using Backend.Abstractions.Cart;
 using Backend.Abstractions.Payment;
-using Backend.Abstractions.Size;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +22,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         policy => policy.WithOrigins("http://localhost:3000")
             .AllowAnyMethod()
-            .AllowAnyHeader());
+            .AllowAnyHeader()
+            .AllowCredentials());
 });
 
 // Add XML documentation to Swagger
@@ -95,8 +95,6 @@ builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
-builder.Services.AddScoped<ISizeRepository, SizeRepository>();
-builder.Services.AddScoped<ISizeService, SizeService>();
 
 // Build the app
 var app = builder.Build();
@@ -114,10 +112,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 // ПОЛНАЯ ХУЙНЯ потом разобраться если заработает
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<MyDbContext>();
-    db.Database.EnsureCreated();
-}
+var scope = app.Services.CreateScope();
+var db = scope.ServiceProvider.GetRequiredService<MyDbContext>();
+db.Database.EnsureCreated();
+
 
 app.Run();
