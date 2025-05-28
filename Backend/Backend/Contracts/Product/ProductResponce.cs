@@ -1,4 +1,4 @@
-using Backend.Contracts.Size;
+namespace Backend.Contracts;
 
 public class ProductResponse
 {
@@ -7,7 +7,7 @@ public class ProductResponse
     public string Description { get; set; } = string.Empty;
     public decimal Price { get; set; }
     public string Category { get; set; } = string.Empty;
-    public List<string> ImageUrls { get; set; } = new();
     
-    public List<ProductSizeResponse> Sizes { get; set; } = new();
+    public int Size { get; set; }
+    public List<string> ImageUrls { get; set; } = new();
 }

@@ -1,5 +1,4 @@
 using Backend.Abstractions;
-using Backend.Abstractions.Size;
 using Backend.Contracts;
 using Backend.Contracts.Size;
 using Backend.Entities;
@@ -13,14 +12,11 @@ namespace Backend.Controllers;
 public class ProductController : ControllerBase
 {
     private readonly IProductService _productService;
-    private readonly ISizeService _sizeService;
 
     public ProductController(
-        IProductService productService,
-        ISizeService sizeService)
+        IProductService productService)
     {
         _productService = productService;
-        _sizeService = sizeService;
     }
 
     [HttpPost]
@@ -37,12 +33,6 @@ public class ProductController : ControllerBase
 
         var productId = await _productService.CreateProduct(product);
 
-        // Добавляем размеры если они есть
-        if (productRequest.Sizes?.Any() == true)
-        {
-            await _sizeService.AddSizesToProduct(productId, productRequest.Sizes);
-        }
-
         return Ok(productId);
     }
     /// <summary>
@@ -58,8 +48,6 @@ public class ProductController : ControllerBase
         var response = new List<ProductResponse>();
         foreach (var product in products)
         {
-            var sizes = await _sizeService.GetProductSizes(product.Id) ?? new List<ProductSizeEntity>();
-        
             response.Add(new ProductResponse
             {
                 Id = product.Id,
@@ -67,12 +55,7 @@ public class ProductController : ControllerBase
                 Description = product.Description,
                 Price = product.Price,
                 Category = product.Category,
-                ImageUrls = product.Images?.Select(i => i.Url).ToList() ?? new(),
-                Sizes = sizes.Select(s => new ProductSizeResponse
-                {
-                    SizeName = s.Size?.Name ?? string.Empty,
-                    Quantity = s.Quantity
-                }).ToList()
+                ImageUrls = product.Images?.Select(i => i.Url).ToList() ?? new()
             });
         }
 
@@ -91,8 +74,6 @@ public class ProductController : ControllerBase
         if (product == null)
             return NotFound();
 
-        var sizes = await _sizeService.GetProductSizes(id) ?? new List<ProductSizeEntity>();
-
         return Ok(new ProductWithSizesResponse
         {
             Id = product.Id,
@@ -101,11 +82,6 @@ public class ProductController : ControllerBase
             Price = product.Price,
             Category = product.Category,
             ImageUrls = product.Images?.Select(i => i.Url).ToList() ?? new(),
-            Sizes = sizes.Select(s => new ProductSizeResponse
-            {
-                SizeName = s.Size?.Name ?? string.Empty,
-                Quantity = s.Quantity
-            }).ToList()
         });
     }
 
@@ -129,10 +105,6 @@ public class ProductController : ControllerBase
         {
             return NotFound();
         }
-        if (request.Sizes != null)
-        {
-            await _sizeService.UpdateProductSizes(id, request.Sizes);
-        }
 
         return NoContent();
     }
@@ -150,7 +122,6 @@ public class ProductController : ControllerBase
         var response = new List<ProductWithSizesResponse>();
         foreach (var product in products)
         {
-            var sizes = await _sizeService.GetProductSizes(product.Id);
             response.Add(new ProductWithSizesResponse
             {
                 Id = product.Id,
@@ -159,11 +130,6 @@ public class ProductController : ControllerBase
                 Price = product.Price,
                 Category = product.Category,
                 ImageUrls = product.Images?.Select(i => i.Url).ToList() ?? new(),
-                Sizes = sizes.Select(s => new ProductSizeResponse
-                {
-                    SizeName = s.Size.Name,
-                    Quantity = s.Quantity
-                }).ToList()
             });
         }
 

@@ -15,8 +15,8 @@ public class PaymentService : IPaymentService
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly ILogger<PaymentService> _logger;
 
-    private const string ShopId = "YOUR_SHOP_ID";
-    private const string SecretKey = "YOUR_SECRET_KEY";
+    private const string ShopId = "misha";
+    private const string SecretKey = "misha";
     private const string YooKassaApiUrl = "https://api.yookassa.ru/v3/payments";
 
     public PaymentService(
@@ -33,23 +33,18 @@ public class PaymentService : IPaymentService
     {
         try
         {
-            // Валидация входных данных
             ValidatePaymentRequest(request);
+            
+            var client = CreateYooKassaClient();
 
-            // Создание HTTP-клиента
-            using var client = CreateYooKassaClient();
-
-            // Подготовка тела запроса
             var requestBody = CreatePaymentRequestBody(request);
             var content = new StringContent(
                 JsonConvert.SerializeObject(requestBody),
                 Encoding.UTF8,
                 "application/json");
 
-            // Отправка запроса в ЮКассу
             var response = await client.PostAsync(YooKassaApiUrl, content);
-            
-            // Обработка ответа
+
             var responseContent = await response.Content.ReadAsStringAsync();
             
             if (!response.IsSuccessStatusCode)
@@ -59,15 +54,11 @@ public class PaymentService : IPaymentService
                 throw new PaymentException($"Ошибка при обращении к API ЮКассы. Код статуса: {response.StatusCode}");
             }
 
-            // Десериализация ответа
             var result = JsonConvert.DeserializeObject<dynamic>(responseContent) 
                 ?? throw new PaymentException("Некорректный ответ от ЮКассы");
 
-            // Создание и сохранение платежа
             var payment = CreatePaymentEntity(request, result);
             await _repository.SaveAsync(payment);
-
-            // Возврат ответа
             return CreatePaymentResponse(result);
         }
         catch (PaymentException)

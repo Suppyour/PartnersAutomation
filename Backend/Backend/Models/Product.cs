@@ -11,20 +11,12 @@ namespace Backend.Models
         public string Description { get; set; } = null!;
         public decimal Price { get; set; }
         public string Category { get; set; } = null!;
+        
+        public int Size { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
         public List<ProductImageEntity>? Images { get; set; }
-        public string? SizesJson { get; set; }
-
-        [NotMapped]
-        public Dictionary<string, int> Sizes
-        {
-            get => string.IsNullOrEmpty(SizesJson) 
-                ? new Dictionary<string, int>() 
-                : JsonSerializer.Deserialize<Dictionary<string, int>>(SizesJson)!;
-            set => SizesJson = JsonSerializer.Serialize(value);
-        }
-
+        
         public static (Product? Product, string Error) CreateProduct(string name, string description, decimal price,
             string category, Dictionary<string, int>? sizes = null)
         {
@@ -43,11 +35,6 @@ namespace Backend.Models
                 Category = category,
                 CreatedAt = DateTime.UtcNow
             };
-
-            if (sizes != null)
-            {
-                product.Sizes = sizes;
-            }
 
             return (product, string.Empty);
         }

@@ -51,20 +51,23 @@ public class UserService : IUserService
         return user.Id;
     }
 
-    public async Task<object> Login(string email, string password)
+    public async Task<object> Login(string login, string password, string email)
     {
         var user = await _userRepository.GetUserByEmail(email);
-        
+    
+        if (user == null)
+        {
+            throw new Exception("Пользователь не найден");
+        }
+
         var result = _passwordHasher.VerifyHash(password, user.Password);
         if (!result)
         {
-            throw new Exception("Не удалось залогиниться");
+            throw new Exception("Неверный пароль");
         }
 
         var token = _jwtProvider.GenerateToken(user);
 
         return new { token, userId = user.Id };
     }
-
-    
 }

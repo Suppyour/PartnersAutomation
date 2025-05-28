@@ -1,13 +1,9 @@
-namespace Backend.Contracts
-{
-    public record ProductRequest(
-        string Name,
-        string Description,
-        decimal Price,
-        string Category,
-        List<ProductSizeRequest>? Sizes);
-}
+namespace Backend.Contracts;
 
-public record ProductSizeRequest(
-    Guid SizeId,
-    int Quantity);
+public record ProductRequest(
+    string Name,
+    string Description,
+    decimal Price,
+    string Category,
+    int Size,
+    List<string> ImageUrls);

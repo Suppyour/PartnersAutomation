@@ -26,13 +26,18 @@ public class UserEndpoints
         
         return Results.Ok();
     }
-// todo check this
     private static async Task<IResult> Login(
         LoginUserRequest request,
         UserService userService)
     {
-        var token = await userService.Login(request.Login, request.Password);
-        
-        return Results.Ok(token);
+        try
+        {
+            var token = await userService.Login(request.Login, request.Password, request.Email);
+            return Results.Ok(token);
+        }
+        catch (Exception ex)
+        {
+            return Results.BadRequest(ex.Message);
+        }
     }
 }
