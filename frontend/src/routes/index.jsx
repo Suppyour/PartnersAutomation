@@ -11,6 +11,7 @@ import Cart from "../pages/Cart";
 import Profile from "../pages/Profile";
 import NewProducts from '../pages/NewProducts';
 import AdminDashboard from '../pages/admin/AdminDashboard';
+import AddProductPage from '../pages/admin/AddProductPage';
 
 export const AppRoutes = () => {
   return (
@@ -24,12 +25,8 @@ export const AppRoutes = () => {
         <Route path="/brands" element={<Brands />} />
         <Route path="/catalog/:id" element={<ProductPage />} />
         <Route path="/new" element={<NewProducts />} />
-        <Route path="/admin" element={
-            <ProtectedRoute>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/add-product" element={<AddProductPage />} />
         <Route path="/cart" element={
             <ProtectedRoute>
               <Cart />

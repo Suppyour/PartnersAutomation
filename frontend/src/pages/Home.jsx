@@ -95,7 +95,7 @@ const Home = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section><button><Link to={`/admin`} className={styles.adminLink}>Admin</Link></button> {/* Временно */}
     </div>
   );
 };

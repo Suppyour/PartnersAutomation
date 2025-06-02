@@ -12,40 +12,12 @@ import {
   FiUser
 } from 'react-icons/fi';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
+import Sidebar from './Sidebar';
 
 const AdminDashboard = () => {
-  const [activeSection, setActiveSection] = useState('Главная');
-
-  const menuItems = [
-    { icon: <FiHome />, label: 'Главная' },
-    { icon: <FiBox />, label: 'Добавить товар' },
-    { icon: <FiShoppingCart />, label: 'Заказы' },
-    { icon: <FiUsers />, label: 'Пользователи' },
-    { icon: <FiMessageSquare />, label: 'Отзывы' },
-    { icon: <FiBarChart2 />, label: 'Статистика' },
-    { icon: <FiSettings />, label: 'Настройки' },
-  ];
-
   return (
     <div className={styles.dashboard}>
-      <aside className={styles.sidebar}>
-        <div className={styles.logo}>
-          <div className={styles.avatar}><FiUser /></div>
-          <div className={styles.username}>Admin</div>
-        </div>
-        <nav className={styles.menu}>
-          {menuItems.map(item => (
-            <button
-              key={item.label}
-              className={`${styles.menuItem} ${activeSection === item.label ? styles.active : ''}`}
-              onClick={() => setActiveSection(item.label)}
-            >
-              {item.icon}
-              <span>{item.label}</span>
-            </button>
-          ))}
-        </nav>
-      </aside>
+      <Sidebar />
       <main className={styles.mainContent}>
         <header className={styles.header}>
           <div>
