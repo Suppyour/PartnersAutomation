@@ -1,0 +1,195 @@
+.reviewsPage {
+  padding: 24px;
+  /* background-color: #fff; */
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.dateRange {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.controls input[type="text"],
+.controls input[type="date"],
+.controls select {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.exportBtn {
+  background-color: #5d5fef;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.reviewList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.reviewItem {
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #fafafa;
+}
+
+.reviewHeader {
+  display: flex;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.user {
+  color: #000;
+}
+
+.product {
+  color: #888;
+  font-size: 14px;
+}
+
+.text {
+  font-size: 15px;
+  color: #333;
+  margin: 4px 0;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  color: #666;
+}
+
+.stars {
+  color: #f5b301;
+  font-size: 14px;
+}
+
+.status {
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+/* Статусы */
+.status.на модерации {
+  color: #e58e26;
+  background-color: #fff4e1;
+}
+
+.status.опубликован {
+  color: #27ae60;
+  background-color: #e5f9ed;
+}
+
+.status.отключён,
+.status.отклонён {
+  color: #e74c3c;
+  background-color: #fdecea;
+}
+
+.status.спам {
+  color: #a94442;
+  background-color: #f2dede;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.danger {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.warning {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.edit {
+  background-color: #6c63ff;
+  color: #fff;
+}
+
+.approve {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.reject {
+  background-color: #ff6b6b;
+  color: #fff;
+}
+
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #000;
+  color: #fff;
+}

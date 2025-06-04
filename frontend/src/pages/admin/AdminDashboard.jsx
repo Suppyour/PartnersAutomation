@@ -1,13 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../../styles/AdminDashboard.module.css';
 import {
-  FiHome,
-  FiBox,
-  FiShoppingCart,
-  FiUsers,
-  FiMessageSquare,
   FiBarChart2,
-  FiSettings,
   FiCalendar,
   FiUser
 } from 'react-icons/fi';
@@ -26,7 +20,7 @@ const AdminDashboard = () => {
           </div>
           <div className={styles.dateAndUser}>
             <FiCalendar />
-            <span> 11 нояб, 2024 — 11 окт, 2025</span>
+            <span>11 нояб, 2024 — 11 окт, 2025</span>
             <span><FiUser /> Admin</span>
           </div>
         </header>
@@ -103,3 +97,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

@@ -3,6 +3,7 @@ import styles from "../styles/Profile.module.css";
 import products from "../data/Products";
 import ProductCard from "../components/layout/ProductCard";
 import { FiSettings, FiCreditCard, FiHeart, FiEdit2 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 // Общий компонент для секций
 const Section = ({ title, children }) => (
@@ -161,6 +162,8 @@ function Profile() {
               <ServiceCard key={index} {...card} />
             ))}
           </div>
+          <Link to={`/admin`}><button style={{width:"500px", height:"40px"}} >Админ-панель</button></Link>
+          
         </div>
       </div>
 

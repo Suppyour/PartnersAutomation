@@ -1,0 +1,266 @@
+/* ---------------- Общее оформление разделов ---------------- */
+.header {
+  padding: 45px 0 0 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+}
+
+.section {
+  margin-bottom: 32px;
+  padding: 0 25px;
+}
+
+/* ---------- Заголовок каждого сектора с иконкой ---------- */
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+.sectionIcon {
+  font-size: 20px;
+  color: #5d5fef;
+}
+
+/* ---------------- Общая карточка (белый фон) ---------------- */
+.card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.cardHeader {
+  background-color: #f9f9f9;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 1px solid #e0e0e0;
+}
+.cardBody {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------------- Группа ввода (label + input) ---------------- */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.inputGroup label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* ---------- Поле ввода с иконкой редактирования ---------- */
+.inputWithIcon {
+  position: relative;
+  width: 100%;
+}
+.inputWithIcon input,
+.inputWithIcon textarea {
+  width: 100%;
+  padding: 8px 36px 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  background: #fefefe;
+}
+.inputWithIcon input[readonly] {
+  background: #f5f5f5;
+}
+.inputWithIcon .editIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ---------------- Кнопки ---------------- */
+.buttonRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+.primaryBtn {
+  background-color: #5d5fef;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.outlineBtn {
+  background: none;
+  color: #5d5fef;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #5d5fef;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ---------------- Поле выбора изображения ---------------- */
+.imagePicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.imagePreview {
+  width: 100px;
+  height: 100px;
+  background-color: #f5f5f5;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 12px;
+}
+.uploadBtn {
+  background-color: #fff;
+  color: #333;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ---------------- Поле пароля с иконкой «глаз» ---------------- */
+.eyeIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+}
+.inputWithIcon input[type="password"] {
+  font-family: "•", sans-serif;
+}
+
+/* ---------------- Переключатель 2FA ---------------- */
+.toggleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.toggleIcon {
+  font-size: 24px;
+  color: #5d5fef;
+  cursor: pointer;
+}
+
+/* ---------------- Таблица администраторов ---------------- */
+.addAdminBtn {
+  margin-left: auto;
+  background-color: #5d5fef;
+  color: #fff;
+  padding: 6px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.adminsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+.adminsTable th,
+.adminsTable td {
+  padding: 12px 8px;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+.adminsTable thead {
+  background-color: #f9f9f9;
+}
+.statusActive {
+  color: #27ae60;
+  font-weight: 500;
+}
+.deleteBtn {
+  background: none;
+  color: #e74c3c;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ---------------- Блок «Настройки магазина» ---------------- */
+.workTimeGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.timeRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.timeRow span {
+  font-size: 14px;
+  width: 80px;
+  color: #333;
+}
+
+/* ---------------- Кнопки «Сохранить/Отмена» в конце ---------------- */
+/* (уже определены классами primaryBtn и outlineBtn) */
+
+/* ---------------- Общая адаптивность ---------------- */
+@media (max-width: 1024px) {
+  .cardBody {
+    padding: 12px;
+  }
+  .inputWithIcon input,
+  .inputWithIcon textarea {
+    padding-right: 32px;
+  }
+  .sectionTitle {
+    font-size: 16px;
+  }
+  .statusActive {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent, .workTimeGroup {
+    flex-direction: column;
+  }
+  .buttonRow {
+    flex-direction: column;
+  }
+  .addAdminBtn {
+    margin-top: 12px;
+  }
+  .timeRow {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}

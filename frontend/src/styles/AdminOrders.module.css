@@ -1,0 +1,103 @@
+.ordersPage {
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dateRange {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #555;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.controls input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.exportBtn {
+  background-color: #6a5acd;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ordersTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ordersTable th, .ordersTable td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.confirmed {
+  background: #e4fbee;
+  color: #29a073;
+}
+
+.pending {
+  background: #fff4d6;
+  color: #e0a200;
+}
+
+.rejected {
+  background: #fde4e4;
+  color: #e45d5d;
+}
+
+.inprocess {
+  background: #e3eafe;
+  color: #3b7ee3;
+}
+
+.completed {
+  background: #e5f5e9;
+  color: #3da95c;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}
+
+.pagination .active {
+  background: black;
+  color: white;
+  border-color: black;
+}

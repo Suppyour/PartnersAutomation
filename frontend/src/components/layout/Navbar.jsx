@@ -85,7 +85,7 @@ const Navbar = () => {
             <Link to="/sale" className={styles.menuItem}>Распродажа</Link>
             <Link to="/new" className={styles.menuItem}>Новинки</Link>
 
-            <div
+            {/* <div
                 className={styles.menuItem}
                 onMouseEnter={() => setBrandsOpen(true)}
                 onMouseLeave={() => setBrandsOpen(false)}
@@ -100,7 +100,7 @@ const Navbar = () => {
                     <Link to="#">Бренд 3</Link>
                   </div>
               )}
-            </div>
+            </div> */}
 
             {/* Поиск (скрывается на мобильных) */}
             <div className={styles.search}>
@@ -140,7 +140,7 @@ const Navbar = () => {
                     <span className={styles.cartBadge}>{cartItemsCount}</span>
                 )}
               </Link>
-              <Link to="/auth" className={styles.userIcon}>
+              <Link to="/profile" className={styles.userIcon}>
                 <FiUser />
               </Link>
             </div>

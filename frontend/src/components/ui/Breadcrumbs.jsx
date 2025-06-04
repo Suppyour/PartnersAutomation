@@ -14,6 +14,13 @@ const breadcrumbMap = {
   brands: "Бренды",
   news: "Новинки",
   admin: "Панель администратора",
+  new: "Новинки",
+  add_product: "Добавить товар",
+  orders: "Заказы",
+  users: "Пользователи",
+  reviews: "Отзывы",
+  stats: "Статистика",
+  settings: "Настройки",
 //   product.id: product.name,
 };
 

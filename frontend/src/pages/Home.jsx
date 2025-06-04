@@ -46,8 +46,8 @@ const Home = () => {
   return (
     <div className={styles.container}>
     <section className={styles.fashionSection}>
-      <span className={`${styles.star} ${styles.topStar}`}>✦</span>
-      <span className={`${styles.star} ${styles.bottomStar}`}>✦</span>
+      {/* <span className={`${styles.star} ${styles.topStar}`}>✦</span> */}
+      {/* <span className={`${styles.star} ${styles.bottomStar}`}>✦</span> */}
       <div className={styles.fashionContainer}>
         {/* Левая часть — текст */}
         <div className={styles.fashionText}>
@@ -95,7 +95,9 @@ const Home = () => {
             </div>
           ))}
         </div>
-      </section><button><Link to={`/admin`} className={styles.adminLink}>Admin</Link></button> {/* Временно */}
+      </section>
+      {/* <button><Link to={`/admin`} className={styles.adminLink}>Admin</Link></button>  */}
+      {/* Временно */}
     </div>
   );
 };
