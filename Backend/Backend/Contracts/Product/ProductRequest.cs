@@ -5,5 +5,5 @@ public record ProductRequest(
     string Description,
     decimal Price,
     string Category,
-    int Size,
-    List<string> ImageUrls);
+    int Size
+);
