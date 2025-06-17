@@ -98,9 +98,9 @@ const AddProductPage = () => {
                   <option value="">Выберите категорию</option>
                   <option value="Одежда">Одежда</option>
                   <option value="Обувь">Обувь</option>
-                  <option value="Обувь">test1</option>
-                  <option value="Обувь">Перчатки</option>
-                  <option value="Обувь">Носки))</option>
+                  <option value="test1">test1</option>
+                  <option value="Перчатки">Перчатки</option>
+                  <option value="Носки">Носки</option>
                 </select>
               </div>
 

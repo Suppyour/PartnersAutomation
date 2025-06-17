@@ -172,4 +172,40 @@ public class ProductController : ControllerBase
 
         return Ok(response);
     }     
+    
+    /// <summary>
+    /// Получает все товары с фильтрацией по цене
+    /// </summary>
+    /// <param name="minPrice">Минимальная цена</param>
+    /// <param name="maxPrice">Максимальная цена</param>
+    [HttpGet("filterPrice")]
+    public async Task<ActionResult<List<ProductWithSizesResponse>>> GetProductsByPrice(
+        [FromQuery] decimal? minPrice = null,
+        [FromQuery] decimal? maxPrice = null)
+    {
+        var products = await _productService.GetProducts();
+        
+        if (minPrice.HasValue)
+        {
+            products = products.Where(p => p.Price >= minPrice.Value).ToList();
+        }
+        if (maxPrice.HasValue)
+        {
+            products = products.Where(p => p.Price <= maxPrice.Value).ToList();
+        }
+
+        var response = products.Select(product => new ProductWithSizesResponse
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            Price = product.Price,
+            Category = product.Category,
+            ImageUrls = product.Images?.Select(i => i.Url).ToList() ?? new(),
+        }).ToList();
+
+        return Ok(response);
+    }
+
+    
 }

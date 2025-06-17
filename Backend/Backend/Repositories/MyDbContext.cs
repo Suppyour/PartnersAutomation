@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using Backend.Entities;
+using Backend.Models;
 
 namespace Backend.Repositories
 {
@@ -11,6 +12,7 @@ namespace Backend.Repositories
         public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<PaymentEntity> Payments { get; set; }
+        public DbSet<RecipientEntity> Recipients { get; set; }
         
         public async Task RecreateDatabase()
         {

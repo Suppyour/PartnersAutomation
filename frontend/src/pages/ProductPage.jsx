@@ -17,7 +17,7 @@ const ProductPage = () => {
   const { id } = useParams();
   const product = products.find((p) => String(p.id) === id);
 
-  if (!product) return <div>Товар не найден</div>;
+  if (!product) return <div>с форм файлами лажа</div>;
 
   return (
     <div className={styles.page}>

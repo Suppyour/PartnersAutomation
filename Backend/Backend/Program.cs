@@ -11,6 +11,8 @@ using System.Reflection;
 using Backend;
 using Backend.Abstractions.Cart;
 using Backend.Abstractions.Payment;
+using Backend.Abstractions.Recipient;
+using Backend.Models;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -95,6 +97,8 @@ builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<IRecipientRepository, RecipientRepository>();
+builder.Services.AddScoped<IRecipientService, RecipientService>();
 
 // Build the app
 var app = builder.Build();
