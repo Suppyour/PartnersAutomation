@@ -1,5 +1,6 @@
 using Backend.Contracts;
 using Backend.Abstractions;
+using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
@@ -47,6 +48,15 @@ namespace Backend.Controllers
             var result = await _userService.Login(request.Login, request.Password, request.Email);
             
             return Ok(result);
+        }
+        /// <summary>
+        /// Получить список всех пользователей.
+        /// </summary>
+        [HttpGet]
+        public async Task<ActionResult<List<User>>> GetAllUsers()
+        {
+            var users = await _userService.GetAllUsers();
+            return Ok(users);
         }
     }
 }
