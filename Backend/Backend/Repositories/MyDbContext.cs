@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
+using Backend.DTODelivery;
 using Backend.DTOrders;
 using Backend.Entities;
 using Backend.Models;
@@ -17,6 +18,8 @@ namespace Backend.Repositories
         public DbSet<Order> Orders { get; set; }
         
         public DbSet<OrderItem> OrderItems { get; set; }
+        
+        public DbSet<DeliveryEntity> Deliveries { get; set; }
         
         public async Task RecreateDatabase()
         {

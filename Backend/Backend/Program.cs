@@ -13,6 +13,7 @@ using Backend.Abstractions.Cart;
 using Backend.Abstractions.Payment;
 using Backend.Abstractions.Recipient;
 using Backend.Data.Repositories;
+using Backend.DTODelivery;
 using Backend.DTOrders;
 using Backend.Models;
 using Microsoft.OpenApi.Models;
@@ -103,6 +104,9 @@ builder.Services.AddScoped<IRecipientRepository, RecipientRepository>();
 builder.Services.AddScoped<IRecipientService, RecipientService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IDeliveryRepository, DeliveryRepository>();
+builder.Services.AddScoped<IDeliveryService, DeliveryService>();
+
 
 // Build the app
 var app = builder.Build();
